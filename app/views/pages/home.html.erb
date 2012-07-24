@@ -1,0 +1,23 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<% flash.each do |key, value| %>
+	<div class='flash' id='<%=key%>'>
+		<%=value%>
+	</div>
+	<%end%>
+
+<% if user_signed_in? %>
+	<div>Signed in as: <%=current_user.email%></div>
+	<%=link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
+
+<% else %>
+<nav> 	
+	<%= link_to "Sign in", new_user_session_path%>
+</nav>
+
+<nav>
+	<%= link_to "Sign up", new_user_registration_path%>
+</nav>
+
+<%end%>
